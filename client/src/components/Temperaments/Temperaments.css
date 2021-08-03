@@ -1,0 +1,13 @@
+button {
+    font-family: 'Space Mono', monospace; 
+    font-weight: 400;
+    background-color: white;
+    border: 1px solid black;
+    margin: 2px;
+}
+
+button:hover {
+    background-color: rgb(255, 254, 191);
+}
+
+

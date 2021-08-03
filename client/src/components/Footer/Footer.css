@@ -1,0 +1,25 @@
+.footer {
+    border-top: 1px solid grey;
+    background: white;
+    text-align: left;
+    padding: 20px;
+    bottom: 0;
+    min-height: 30px;
+}
+
+
+.footertext {
+    margin-right: 30px;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.footerlinks {
+    text-decoration: none;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+}
+
+.footerlinks:hover {
+    color: rgb(192, 0, 0);
+}
