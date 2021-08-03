@@ -1,3 +1,4 @@
+const Pool = require("pg").Pool;
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
@@ -10,6 +11,11 @@ const {
 const devConfig = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
 
 const proConfig = process.env.DB_NAME;
+
+const pool = new Pool({
+  connectionString:
+    process.env.NODE_ENV === "production" ? proConfig : devConfig,
+});
 
 const sequelize = new Sequelize(
   process.env.NODE_ENV === "production" ? proConfig : devConfig, {
@@ -48,4 +54,5 @@ Temperament.belongsToMany(Dog, { through: 'dog_temperament', foreignKey: 'temper
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+  pool
 };
