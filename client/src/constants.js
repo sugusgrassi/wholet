@@ -1,6 +1,6 @@
-const BASE_URL = 'http://localhost:3001/dogs';
-const TEMP_URL = 'http://localhost:3001/temperament';
-const POST_DOG_URL = 'http://localhost:3001/dog';
+const BASE_URL = '/dogs';
+const TEMP_URL = '/temperament';
+const POST_DOG_URL = '/dog';
 
 module.exports = {
     BASE_URL,

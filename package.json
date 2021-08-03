@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "nodemon -L",
-    "test": "mocha -w ./tests/**/*.spec.js"
+  "engine": {
+    "node": "10.16.1",
+    "npm": "6.14.12"
   },
-  "author": "Henry",
+  "scripts": {
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "author": "Agustín Grassi",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",

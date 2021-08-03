@@ -17,13 +17,29 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
+const app = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const PORT = process.env.PORT || 3001;
+const path = require("path")
+const express = require("express");
+// const cors = require("cors");
 
+//middleware
+// app.use(cors());
+// app.use(express.json()); //req.body
+
+// app.use(express.static("./client/build"))
+// app.use(express.static(path.join(__dirname, "client/build")))
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")))
+}
+
+// console.log(path.join(__dirname, "client/build"))
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   // console.log("conecta!")
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  app.listen(PORT, () => {
+    console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
   });
 });
