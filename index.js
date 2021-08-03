@@ -39,7 +39,5 @@ if (process.env.NODE_ENV === "production") {
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   // console.log("conecta!")
-  app.listen(PORT, () => {
-    console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
-  });
+  app.listen(PORT, '0.0.0.0');
 });
