@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === "production") {
 
 // console.log(path.join(__dirname, "client/build"))
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   // console.log("conecta!")
   app.listen(PORT, '0.0.0.0');
 });
