@@ -19,7 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const app = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001
 const path = require("path")
 const express = require("express");
 // const cors = require("cors");
@@ -29,7 +29,7 @@ const express = require("express");
 // app.use(express.json()); //req.body
 
 // app.use(express.static("./client/build"))
-// app.use(express.static(path.join(__dirname, "client/build"))) 
+app.use(express.static(path.join(__dirname, "client/build"))) 
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")))

@@ -3,12 +3,12 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
-} = process.env;
+// const {
+//   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
+// } = process.env;
 
 
-const devConfig = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
+const devConfig = `postgres://yycevmmyzkraay:eadcc187a4017c742a35ac849febc37f182c097cef5c694b0bfe026c3ae23bd8@ec2-3-227-44-84.compute-1.amazonaws.com:5432/d13fmi4d4bo2m1`
 
 const proConfig = process.env.DB_NAME;
 
