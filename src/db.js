@@ -7,20 +7,16 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
 } = process.env;
 
-
-const devConfig = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
-
-// const proConfig = "postgres://yycevmmyzkraay:eadcc187a4017c742a35ac849febc37f182c097cef5c694b0bfe026c3ae23bd8@ec2-3-227-44-84.compute-1.amazonaws.com:5432/d13fmi4d4bo2m1";
-const proConfig = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/${DB_NAME}`;
-
+const config = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
 const pool = new Pool({
   connectionString:
-    process.env.NODE_ENV === "production" ? proConfig : devConfig,
+    process.env.NODE_ENV === config,
 });
 
-const sequelize = new Sequelize(
-  process.env.NODE_ENV === "production" ? proConfig : devConfig, {
+const sequelize = process.env.NODE_ENV === "production" 
+  
+  ? new Sequelize(config, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   ssl: true, 
@@ -31,7 +27,13 @@ const sequelize = new Sequelize(
       rejectUnauthorized: false // <<<<<<< YOU NEED THIS
     }
   }
-});
+  })
+  : new Sequelize (config, {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false,
+    dialect: "postgres"
+  })
+;
 const basename = path.basename(__filename);
 
 const modelDefiners = [];

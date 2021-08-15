@@ -29,16 +29,16 @@ const express = require("express");
 // app.use(express.json()); //req.body
 
 // app.use(express.static("./client/build"))
-// app.use(express.static(path.join(__dirname, "client/build"))) 
+app.use(express.static(path.join(__dirname, "client/build"))) 
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")))
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "client/build")))
+// }
 
 // console.log(path.join(__dirname, "client/build"))
 // Syncing all the models at once.
 // conn.sync({ force: false }).then(() => {
 conn.sync().then(() => {
   // console.log("conecta!")
-  app.listen(PORT, '0.0.0.0');
+  app.listen(PORT , '0.0.0.0');
 });
