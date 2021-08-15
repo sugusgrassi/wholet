@@ -10,7 +10,9 @@ const {
 
 const devConfig = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
 
-const proConfig = "postgres://yycevmmyzkraay:eadcc187a4017c742a35ac849febc37f182c097cef5c694b0bfe026c3ae23bd8@ec2-3-227-44-84.compute-1.amazonaws.com:5432/d13fmi4d4bo2m1";
+// const proConfig = "postgres://yycevmmyzkraay:eadcc187a4017c742a35ac849febc37f182c097cef5c694b0bfe026c3ae23bd8@ec2-3-227-44-84.compute-1.amazonaws.com:5432/d13fmi4d4bo2m1";
+const proConfig = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
+
 
 const pool = new Pool({
   connectionString:
